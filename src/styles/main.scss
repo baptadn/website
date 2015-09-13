@@ -1,0 +1,274 @@
+$progressbar-color: black;
+
+html, body {
+  background-color: #f7f9f7;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+}
+
+.bar {
+background-color: red;
+}
+
+aside {
+  position: fixed;
+  color: #f7f9f7;
+  z-index: 9999;
+  padding-top: 30px;
+  padding-left: 30px;
+  h1 {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    margin: 0;
+    background-color: black;
+    font-size: 35px;
+    padding: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: inline-block;
+  }
+  ul {
+    position: relative;
+    color: black;
+    z-index: 100;
+    margin-top: 30px;
+    font-weight: 300;
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      &.run {
+        cursor: pointer;
+      }
+      a {
+        &.active {
+          &::after {
+            content: " />";
+          }
+          &::before {
+            content: "<";
+          }
+        }
+        text-decoration: none;
+        color: white;
+        background-color: black;
+        padding: 2px 4px 3px 4px;
+      }
+      margin-bottom: 10px;
+
+      span {
+        padding: 4px 10px 4px 0;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.leaflet-container {
+    background: rgba(white, 0);
+}
+
+#container {
+  padding-top: 8px;
+  margin-left: 330px;
+  max-width: 700px;
+  margin-right: 20px;
+  padding-bottom: 10px;
+
+  p {
+    text-align: justify;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    font-weight: 300;
+    z-index: 10;
+    position: relative;
+    font-size: 36px;
+    margin-left: -5px;
+  }
+  h2 {
+    font-weight: 900;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+    border-bottom: 1px dotted black;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
+
+#logs {
+  h2 {
+    display: inline-block;
+    margin-right: 20px;
+    z-index: 10;
+    position: relative;
+    margin-top: 0;
+    a {
+      border-bottom: none;
+    }
+    a {
+      &.active {
+        border-bottom: 1px dotted black;
+      }
+    }
+  }
+}
+
+#map {
+  position: absolute;
+  top: 156px;
+  border-top: 5px solid #000000;
+  bottom:0;
+  left: 0;
+  right: 0;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+::-moz-selection {
+  background: black;
+  color: white;
+}
+
+::selection {
+  background: black;
+  color: white;
+}
+
+.hljs {
+  background-color: #f7f9f7;
+}
+
+@media screen and (max-width: 900px) {
+  aside {
+    padding-left: 0;
+    background-color: black;
+    height: 100%;
+    padding-top: 12px;
+    width: 91px;
+    h1 {
+      font-size: 24px;
+    }
+
+    ul {
+      li {
+        span {
+          padding: 3px 8px 4px 9px;
+          font-size: 18px;
+        }
+      }
+      a {
+        &.active {
+          font-weight: bold;
+          &::after {
+            content: "";
+          }
+          &::before {
+            content: "";
+          }
+        }
+      }
+    }
+  }
+  #container {
+    margin-left: 108px;
+
+    h1 {
+      margin-top: 4px;
+      font-size: 29px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 15px;
+      margin-top: 0px;
+    }
+
+    #map {
+      top: 105px;
+    }
+  }
+}
+
+// Progress bar
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: $progressbar-color;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: $progressbar-color;
+  border-left-color: $progressbar-color;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
