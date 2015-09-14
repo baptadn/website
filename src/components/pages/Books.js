@@ -5,20 +5,30 @@ import NProgress from 'nprogress';
 
 export default class Books extends Component {
 
-  static fetchData() {
-    return new Parse.Query(Parse.Object.extend('Book')).descending('displayDate').find();
+  constructor() {
+    super();
+    this.state = {books: []};
+  }
+
+  fetchData() {
+    var self = this;
+    new Parse.Query(Parse.Object.extend('Book')).descending('displayDate').find().then((data) => {
+      self.setState({books: data});
+      NProgress.done();
+    });
   }
 
   componentDidMount() {
-    NProgress.done();
+    this.fetchData();
+    NProgress.start();
   }
 
   render() {
     return (
       <div>
         <h2>2015</h2>
-         {this.props.data.map((post) =>
-             <p><a target="_blank" href={post.attributes.url}>{post.attributes.title}</a></p>
+         {this.state.books.map((book) =>
+             <p><a target="_blank" href={book.attributes.url}>{book.attributes.title}</a></p>
          )}
       </div>
     );

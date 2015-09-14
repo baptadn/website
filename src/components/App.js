@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Router from 'react-router';
-import Menu from './Menu';
+import Menu from './menu';
 
 import Styles from '../styles/main.scss';
-
-var { RouteHandler } = Router;
 
 export default class App extends Component {
   render() {
@@ -12,7 +10,7 @@ export default class App extends Component {
       <div>
         <Menu />
         <div id="container">
-          <RouteHandler data={this.props.data}/>
+          {this.props.children}
         </div>
       </div>
     );

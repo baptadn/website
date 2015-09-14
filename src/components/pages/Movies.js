@@ -6,21 +6,31 @@ import moment from 'moment';
 
 export default class Movies extends Component {
 
-  static fetchData() {
-    return new Parse.Query(Parse.Object.extend('Movie')).descending('displayDate').find();
+  constructor() {
+    super();
+    this.state = {movies: []};
+  }
+
+  fetchData() {
+    var self = this;
+    new Parse.Query(Parse.Object.extend('Movie')).descending('displayDate').find().then((data) => {
+      self.setState({movies: data});
+      NProgress.done();
+    });
   }
 
   componentDidMount() {
-    NProgress.done();
+    this.fetchData();
+    NProgress.start();
   }
 
   render() {
     return (
       <div>
         <h2>2015</h2>
-         {this.props.data.map((post) =>
+         {this.state.movies.map((movie) =>
              <p>
-               <a target="_blank" href={post.attributes.url}>{post.attributes.title}</a> {Object.keys(new Int8Array(post.attributes.rank)).map(() =>
+               <a target="_blank" href={movie.attributes.url}>{movie.attributes.title}</a> {Object.keys(new Int8Array(movie.attributes.rank)).map(() =>
                 <small>★</small>
                )}
              </p>

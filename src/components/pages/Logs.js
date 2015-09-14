@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Router from 'react-router';
-
-var { Link, RouteHandler } = Router;
+import { Router, Route, Link } from 'react-router';
 
 export default class Logs extends Component {
 
@@ -9,10 +7,10 @@ export default class Logs extends Component {
     return (
       <div id="logs">
         <h1>Logs</h1>
-        <h2><Link to="movies">Movies seen</Link></h2>
-        <h2><Link to="books">Books read</Link></h2>
-        <h2><Link to="run">Last run</Link></h2>
-        <RouteHandler data={this.props.data}/>
+        <h2><Link activeClassName="active" to={'/logs/movies'}>Movies seen</Link></h2>
+        <h2><Link activeClassName="active" to={'/logs/books'}>Books read</Link></h2>
+        <h2><Link activeClassName="active" to={'/logs/run'}>Last run</Link></h2>
+        { this.props.children }
       </div>
     );
   }

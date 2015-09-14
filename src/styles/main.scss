@@ -45,14 +45,6 @@ aside {
         cursor: pointer;
       }
       a {
-        &.active {
-          &::after {
-            content: " />";
-          }
-          &::before {
-            content: "<";
-          }
-        }
         text-decoration: none;
         color: white;
         background-color: black;
@@ -78,6 +70,10 @@ aside {
   max-width: 700px;
   margin-right: 20px;
   padding-bottom: 10px;
+
+  img {
+    width: 100%;
+  }
 
   p {
     text-align: justify;
@@ -159,6 +155,19 @@ aside {
   background-color: #f7f9f7;
 }
 
+@media screen and (min-width: 900px) {
+  aside {
+    a.active {
+        &::after {
+          content: " />";
+        }
+        &::before {
+          content: "<";
+        }
+    }
+  }
+}
+
 @media screen and (max-width: 900px) {
   aside {
     padding-left: 0;
@@ -166,11 +175,8 @@ aside {
     height: 100%;
     padding-top: 12px;
     width: 91px;
-    h1 {
-      font-size: 24px;
-    }
-
     ul {
+      margin-top: 13px;
       li {
         span {
           padding: 3px 8px 4px 9px;
@@ -192,6 +198,7 @@ aside {
   }
   #container {
     margin-left: 108px;
+    padding-top: 70px;
 
     h1 {
       margin-top: 4px;
@@ -208,7 +215,7 @@ aside {
     }
 
     #map {
-      top: 105px;
+      top: 165px;
     }
   }
 }

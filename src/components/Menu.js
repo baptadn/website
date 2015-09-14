@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
-import Router from 'react-router';
-import MediaQuery from 'react-responsive';
+import { Router, Route, Link  } from 'react-router';
 
-var { Link, RouteHandler } = Router;
+var { IndexLink } = Router;
 
 export default class Menu extends Component {
 
   render() {
     return (
       <aside>
-        <MediaQuery query='(max-width: 900px)'>
-          <h1>Shnk</h1>
-        </MediaQuery>
-        <MediaQuery query='(min-width: 900px)'>
-          <h1>Shinework</h1>
-        </MediaQuery>
+        <h1>Shinework</h1>
         <ul>
-          <li><span><Link to="blog">blog</Link></span></li>
-          <li><span><Link to="projects">projects</Link></span></li>
-          <li><span><Link to="talks">talks</Link></span></li>
-          <li><span><Link to="logs">logs</Link></span></li>
-          <li><span><Link to="about">about</Link></span></li>
+          <li><span><Link onlyActiveOnIndex={true} to={`/`} activeClassName="active">projects</Link></span></li>
+          <li><span><Link to={`/blog`} activeClassName="active">blog</Link></span></li>
+          <li><span><Link to={`/talks`} activeClassName="active">talks</Link></span></li>
+          <li><span><Link to={`/logs`} activeClassName="active">logs</Link></span></li>
+          <li><span><Link to={`/about`} activeClassName="active">about</Link></span></li>
         </ul>
       </aside>
     );
