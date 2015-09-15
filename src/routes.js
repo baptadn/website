@@ -15,7 +15,7 @@ import NotFound from './components/pages/NotFound';
 import Parse from 'parse';
 
 function redirectToChild(location, replaceWith) {
-  replaceWith(null, '/logs/movies');
+  replaceWith(null, '/logs/run');
 }
 
 var routes = (

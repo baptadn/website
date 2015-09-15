@@ -29,8 +29,8 @@ export default class Blog extends Component {
       <div>
         <h1>Blog</h1>
         <h2>2015</h2>
-         {this.state.posts.map((post) =>
-             <p><b>{moment(post.attributes.displayDate).format("DD/MM")}</b> > <Link to={`/post/${post.attributes.slug}`}>{post.attributes.title}</Link></p>
+         {this.state.posts.map((post, i) =>
+             <p key={i}><b>{moment(post.attributes.displayDate).format("DD/MM")}</b> > <Link to={`/post/${post.attributes.slug}`}>{post.attributes.title}</Link></p>
          )}
       </div>
     );

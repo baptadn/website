@@ -29,13 +29,13 @@ export default class Projects extends Component {
         <h1>Projects</h1>
 
         <h2>IoT</h2>
-        {this.state.posts.filter((post) => post.attributes.type === 'iot').map((post) =>
-            <p><Link to={`/post/${post.attributes.slug}`}>{post.attributes.title}</Link></p>
+        {this.state.posts.filter((post) => post.attributes.type === 'iot').map((post, i) =>
+            <p key={i}><Link to={`/post/${post.attributes.slug}`}>{post.attributes.title}</Link></p>
         )}
 
         <h2>Dev.</h2>
-        {this.state.posts.filter((post) => post.attributes.type === 'dev').map((post) =>
-            <p><Link to={`/post/${post.attributes.slug}`}>{post.attributes.title}</Link></p>
+        {this.state.posts.filter((post) => post.attributes.type === 'dev').map((post, i) =>
+            <p key={i}><Link to={`/post/${post.attributes.slug}`}>{post.attributes.title}</Link></p>
         )}
       </div>
     );

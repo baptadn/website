@@ -4,3 +4,4 @@ npm-debug.log
 deploy.sh
 dist/
 .htaccess
+fetchRun.js

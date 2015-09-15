@@ -28,10 +28,10 @@ export default class Movies extends Component {
     return (
       <div>
         <h2>2015</h2>
-         {this.state.movies.map((movie) =>
-             <p>
-               <a target="_blank" href={movie.attributes.url}>{movie.attributes.title}</a> {Object.keys(new Int8Array(movie.attributes.rank)).map(() =>
-                <small>★</small>
+         {this.state.movies.map((movie, i) =>
+             <p key={i}>
+               <a key={i} target="_blank" href={movie.attributes.url}>{movie.attributes.title}</a> {Object.keys(new Int8Array(movie.attributes.rank)).map((data, i) =>
+                <small key={i}>★</small>
                )}
              </p>
          )}

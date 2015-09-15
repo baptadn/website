@@ -53,7 +53,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: 'src/index.html',
-      minify: true
+      minify: true,
+      favicon: 'favicon.ico'
     }),
     new webpack.NoErrorsPlugin()
   ],

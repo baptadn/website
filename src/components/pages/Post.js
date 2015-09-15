@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import Remarkable from 'remarkable';
 import Parse from 'parse';
 import NProgress from 'nprogress';
+import moment from 'moment';
 
 var md = new Remarkable();
 
@@ -40,6 +41,7 @@ export default class Post extends Component {
           <h1>{this.state.post.attributes.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: this.state.post.attributes.video}}></div>
           <div dangerouslySetInnerHTML={{__html: this.state.content }}></div>
+          <small>Last update: {moment(this.state.post.attributes.updatedAt).format("DD/MM/YY")}</small>
         </div>
       );
     } else {

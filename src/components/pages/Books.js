@@ -27,8 +27,8 @@ export default class Books extends Component {
     return (
       <div>
         <h2>2015</h2>
-         {this.state.books.map((book) =>
-             <p><a target="_blank" href={book.attributes.url}>{book.attributes.title}</a></p>
+         {this.state.books.map((book, i) =>
+             <p key={i}><a target="_blank" href={book.attributes.url}>{book.attributes.title}</a></p>
          )}
       </div>
     );
