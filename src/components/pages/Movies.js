@@ -8,13 +8,13 @@ export default class Movies extends Component {
 
   constructor() {
     super();
-    this.state = {movies: []};
+    this.state = {movies: [], dataFetched: false};
   }
 
   fetchData() {
     var self = this;
     new Parse.Query(Parse.Object.extend('Movie')).descending('displayDate').find().then((data) => {
-      self.setState({movies: data});
+      self.setState({movies: data, dataFetched: false});
       NProgress.done();
     });
   }

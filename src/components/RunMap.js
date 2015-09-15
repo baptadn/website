@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MapBox from 'mapbox.js';
 import moment from 'moment';
-
 import runJson from '../run.json';
 
 export default class RunMap extends Component {
