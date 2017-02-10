@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Router from 'react-router';
 import Parse from 'parse';
 import NProgress from 'nprogress';
-import moment from 'moment';
 
 export default class Movies extends Component {
 

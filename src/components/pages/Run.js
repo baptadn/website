@@ -1,13 +1,9 @@
-import React, { Component } from 'react';
-import RunMap from '../RunMap';
+import React, { Component } from 'react'
+import RunMap from '../RunMap'
 
-export default class Run extends Component {
+const Run = () =>
+  <div>
+    <RunMap />
+  </div>
 
-  render() {
-    return (
-      <div>
-        <RunMap />
-      </div>
-    );
-  }
-}
+export default Run

@@ -1,38 +1,19 @@
 import React, { Component } from 'react';
-import { Router, Route, Link } from 'react-router';
-import Parse from 'parse';
+import { Link } from 'react-router';
 import NProgress from 'nprogress';
 import moment from 'moment';
+import firebase from './../../firebase';
 
-export default class Blog extends Component {
-
-  constructor() {
-    super();
-    this.state = {posts: []};
-  }
-
-  fetchData() {
-    var self = this;
-    new Parse.Query(Parse.Object.extend('Post')).equalTo('type', 'blog').descending('displayDate').find().then((data) => {
-      self.setState({posts: data});
-      NProgress.done();
-    });
-  }
-
-  componentDidMount() {
-    this.fetchData();
-    NProgress.start();
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Blog</h1>
-        <h2>2015</h2>
-         {this.state.posts.map((post, i) =>
-             <p key={i}><b>{moment(post.attributes.displayDate).format("DD/MM")}</b> > <Link to={`/post/${post.attributes.slug}`}>{post.attributes.title}</Link></p>
-         )}
-      </div>
-    );
-  }
+const Blog = props => {
+  return (
+    <div>
+      <h1>Blog</h1>
+      <h2>2015</h2>
+       {props.posts.filter(post => post.type === 'blog').map((post, i) =>
+           <p key={i}><b>{moment(post.displayDate.date).format("DD/MM")}</b> > <Link to={`/post/${post.slug}`}>{post.title}</Link></p>
+       )}
+    </div>
+  )
 }
+
+export default Blog

@@ -1,17 +1,27 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
-import { Router, Route, Link } from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory'
-import NProgress from 'nprogress';
-import Parse from 'parse';
+import {Router} from 'react-router';
+import { browserHistory } from 'react-router'
 import routes from './routes';
-const { object } = React.PropTypes
+import {Provider} from 'react-redux'
+import {createStore, applyMiddleware, compose} from 'redux';
+import rootReducer from './reducers/index';
+import thunkMiddleware from 'redux-thunk';
 
-Parse.initialize("YzeZuX08nPJXmygeKw3x2ENYiLfYZxiqMmgn3vXZ", "CbcCyivzIMw5syWlvE9MLQSZGSrCdI1p8YLj3ZjT");
-
-let history = createBrowserHistory();
+const store = createStore(
+  rootReducer,
+  {},
+  compose(
+    applyMiddleware(
+      thunkMiddleware,
+    ),
+    window.devToolsExtension ? window.devToolsExtension() : f => f,
+  )
+)
 
 ReactDOM.render(
-  <Router history={history} routes={routes} data={{test: 1}}/>,
+  <Provider store={store}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>,
   document.getElementById('app')
 );

@@ -1,38 +1,32 @@
 import React from 'react';
-import { Router, Route, Link, IndexRoute } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 
-import App from './components/App';
+import AppContainer from './containers/AppContainer';
 import About from './components/pages/About';
 import Logs from './components/pages/Logs';
 import Talks from './components/pages/Talks';
-import Projects from './components/pages/Projects';
-import Blog from './components/pages/Blog';
-import Post from './components/pages/Post';
-import Movies from './components/pages/Movies';
-import Books from './components/pages/Books';
+import ProjectsContainer from './containers/ProjectsContainer';
+import BlogContainer from './containers/BlogContainer';
+import PostContainer from './containers/PostContainer';
 import Run from './components/pages/Run';
 import NotFound from './components/pages/NotFound';
-import Parse from 'parse';
-
-function redirectToChild(location, replaceWith) {
-  replaceWith(null, '/logs/run');
-}
 
 var routes = (
-  <Route path="/" component={App}>
-    <IndexRoute component={Projects} />
-    <Route path="blog" component={Blog} />
-    <Route path="projects" component={Projects} />
-    <Route path="/post/:slug" component={Post} />
+  <Route path="/" component={AppContainer}>
+    <IndexRoute component={ProjectsContainer} />
+    <Route path="blog" component={BlogContainer} />
+    <Route path="projects" component={ProjectsContainer} />
+    <Route path="/post/:slug" component={PostContainer} />
     <Route path="talks" component={Talks} />
     <Route path="logs" component={Logs}>
-      <IndexRoute onEnter={redirectToChild} />
-      <Route path="movies" component={Movies} />
+      <IndexRoute component={Run} />
       <Route path="run" component={Run} />
-      <Route path="books" component={Books} />
+      {/*<Route path="movies" component={Movies} />*/}
+      {/*<Route path="books" component={Books} />*/}
     </Route>
     <Route path="about" component={About} />
+    <Route path="*" component={NotFound}/>
   </Route>
-);
+)
 
-export default routes;
+export default routes

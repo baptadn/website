@@ -25,7 +25,6 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     publicPath: '/',
     filename: '[name].js',
-    library: ['Example', '[name]'],
     pathInfo: true
   },
 
@@ -54,7 +53,7 @@ module.exports = {
       inject: true,
       template: 'src/index.html',
       minify: true,
-      favicon: 'favicon.ico'
+      favicon: 'favicon-96x96.png'
     }),
     new webpack.NoErrorsPlugin()
   ],

@@ -1,43 +1,19 @@
 import React, { Component } from 'react';
-import { Router, Route, Link } from 'react-router';
-import NProgress from 'nprogress';
-import Parse from 'parse';
+import {Link} from 'react-router';
 
-export default class Projects extends Component {
+const Projects = props =>
+  <div>
+    <h1>Projects</h1>
 
-  constructor() {
-    super();
-    this.state = {posts: []};
-  }
+    <h2>IoT</h2>
+    {props.posts.filter(post => post.type === 'iot').map((post, i) =>
+        <p key={i}><Link to={`/post/${post.slug}`}>{post.title}</Link></p>
+    )}
 
-  fetchData() {
-    var self = this;
-    new Parse.Query(Parse.Object.extend('Post')).containedIn('type', ['iot', 'dev']).descending('displayDate').find().then((data) => {
-      self.setState({posts: data});
-      NProgress.done();
-    });
-  }
+    <h2>Dev.</h2>
+    {props.posts.filter(post => post.type === 'dev').map((post, i) =>
+        <p key={i}><Link to={`/post/${post.slug}`}>{post.title}</Link></p>
+    )}
+  </div>
 
-  componentDidMount() {
-    this.fetchData();
-    NProgress.start();
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Projects</h1>
-
-        <h2>IoT</h2>
-        {this.state.posts.filter((post) => post.attributes.type === 'iot').map((post, i) =>
-            <p key={i}><Link to={`/post/${post.attributes.slug}`}>{post.attributes.title}</Link></p>
-        )}
-
-        <h2>Dev.</h2>
-        {this.state.posts.filter((post) => post.attributes.type === 'dev').map((post, i) =>
-            <p key={i}><Link to={`/post/${post.attributes.slug}`}>{post.attributes.title}</Link></p>
-        )}
-      </div>
-    );
-  }
-}
+export default Projects

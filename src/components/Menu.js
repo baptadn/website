@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, Link  } from 'react-router';
-
-var { IndexLink } = Router;
+import {Link} from 'react-router';
 
 export default class Menu extends Component {
 

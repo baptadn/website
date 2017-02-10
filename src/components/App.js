@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Router from 'react-router';
 import Menu from './menu';
-
 import Styles from '../styles/main.scss';
 
 export default class App extends Component {
+  componentWillMount() {
+    this.props.loadPosts()
+  }
+
   render() {
     return (
       <div>
@@ -13,6 +15,6 @@ export default class App extends Component {
           {this.props.children}
         </div>
       </div>
-    );
+    )
   }
 }

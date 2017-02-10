@@ -4,12 +4,11 @@ import moment from 'moment';
 import run from '../run.json';
 
 export default class RunMap extends Component {
-
   constructor() {
     super();
 
     this.map = null;
-    this.state = { info: ''};
+    this.state = {info: ''};
   }
 
   initMap() {

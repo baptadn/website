@@ -14,6 +14,6 @@ npm install
 
 ## Usage
 
-Start dev server: `npm run watch` 
+Start dev server: `npm run start` 
 Build app: `npm run build`
 
